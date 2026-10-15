@@ -1,0 +1,118 @@
+{
+  "mode": "gemini",
+  "model": "gemini-3.8-flash",
+  "status": "passed",
+  "live_calls": [
+    {
+      "number": 1,
+      "stage": "article",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "elapsed_seconds": 10.293533681000554
+    },
+    {
+      "number": 2,
+      "stage": "article",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "elapsed_seconds": 9.471426692000023
+    },
+    {
+      "number": 3,
+      "stage": "article",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "elapsed_seconds": 10.157232716999715
+    },
+    {
+      "number": 4,
+      "stage": "article",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "elapsed_seconds": 8.509455474999413
+    },
+    {
+      "number": 5,
+      "stage": "workflow_selection",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "selected_option": "standard",
+      "elapsed_seconds": 3.8888541309988796
+    },
+    {
+      "number": 6,
+      "stage": "workflow_selection",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "selected_option": "standard",
+      "elapsed_seconds": 3.7405228139996325
+    },
+    {
+      "number": 7,
+      "stage": "workflow_selection",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "selected_option": "standard",
+      "elapsed_seconds": 3.7628054750002775
+    },
+    {
+      "number": 8,
+      "stage": "workflow_selection",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "selected_option": "standard",
+      "elapsed_seconds": 3.173149664999073
+    },
+    {
+      "number": 9,
+      "stage": "workflow_selection",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "selected_option": "standard",
+      "elapsed_seconds": 3.0565667000009853
+    },
+    {
+      "number": 10,
+      "stage": "workflow_selection",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "selected_option": "standard",
+      "elapsed_seconds": 2.8209258019996923
+    },
+    {
+      "number": 11,
+      "stage": "workflow_selection",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "selected_option": "standard",
+      "elapsed_seconds": 3.662955007999699
+    },
+    {
+      "number": 12,
+      "stage": "workflow_selection",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "selected_option": "standard",
+      "elapsed_seconds": 3.752002147000894
+    },
+    {
+      "number": 13,
+      "stage": "workflow_selection",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "selected_option": "standard",
+      "elapsed_seconds": 3.2787563019992376
+    },
+    {
+      "number": 14,
+      "stage": "workflow_selection",
+      "model": "gemini-3.8-flash",
+      "status": "returned_json",
+      "selected_option": "direct_recovery",
+      "elapsed_seconds": 4.024299486000018
+    }
+  ],
+  "acceptance_checks": 63,
+  "elapsed_seconds": 76.65454418700028,
+  "successful_live_calls": 14
+}

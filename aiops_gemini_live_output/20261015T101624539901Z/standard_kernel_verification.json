@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "mode": "offline",
+  "execution": "standard Jupyter kernel via nbclient",
+  "platform": "Linux",
+  "python": "3.12.3",
+  "acceptance_checks": 63,
+  "artifact": "/tmp/aiops-standard-kernel-fhs50u57/aiops_ams_demo_standard_kernel.ipynb"
+}

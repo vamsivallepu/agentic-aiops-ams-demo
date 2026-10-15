@@ -1,0 +1,15 @@
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+.aws/
+.ssh/
+.codex/
+.agents/
+aiops_demo_output/
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm

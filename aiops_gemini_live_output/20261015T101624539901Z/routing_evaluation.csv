@@ -1,0 +1,7 @@
+description,expected_family,actual_family,correct
+SAP listener is down and application connections are refused,connectivity,connectivity,True
+Oracle archive storage is full,storage,storage,True
+SAP account locked login rejected,account,account,True
+Oracle scheduled batch job failed,job,job,True
+Invoice checksum mismatch requires investigation,,,True
+The connection listener is stopped,,,True

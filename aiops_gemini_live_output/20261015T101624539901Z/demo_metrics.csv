@@ -1,0 +1,8 @@
+metric,value
+Intake cases,10.0
+Resolved cases,5.0
+Escalated cases,4.0
+Awaiting approval,1.0
+Autonomous resolutions / all intake (%),40.0
+Synthetic mean resolution seconds (resolved only),26.8
+Measured handler invocation seconds (this run),27.816038278000633

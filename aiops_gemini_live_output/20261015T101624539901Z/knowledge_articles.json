@@ -1,0 +1,269 @@
+[
+  {
+    "cluster_id": "C-02",
+    "family": "connectivity",
+    "automation_enabled": true,
+    "system": "SAP",
+    "signal": "connection_refused",
+    "source_incident_ids": [
+      "H-connectivity-000",
+      "H-connectivity-001",
+      "H-connectivity-002",
+      "H-connectivity-003",
+      "H-connectivity-004",
+      "H-connectivity-005",
+      "H-connectivity-006",
+      "H-connectivity-007",
+      "H-connectivity-008",
+      "H-connectivity-009",
+      "H-connectivity-010",
+      "H-connectivity-011",
+      "H-connectivity-012",
+      "H-connectivity-013",
+      "H-connectivity-014",
+      "H-connectivity-015",
+      "H-connectivity-016",
+      "H-connectivity-017",
+      "H-connectivity-018",
+      "H-connectivity-019"
+    ],
+    "rca_summary": "SAP application connection refused due to the SAP connection listener being stopped or unavailable on the affected worker node.",
+    "step_guidance": [
+      "Verify the incident report to confirm connection refused signals and ensure preconditions are met by checking that the SAP connection listener is down on the affected worker node.",
+      "Run diagnostics using DiagnosticAgent to isolate the stopped listener process.",
+      "Execute restart_listener via ConnectivityAgent to bring the SAP connection listener back online.",
+      "Run validation checks using ValidationAgent to ensure the listener is active and that the connection probe succeeds before resolving the incident.",
+      "After failed restart validation, use one approved listener recovery and repeat the health probe"
+    ],
+    "preconditions": [
+      "listener is down"
+    ],
+    "validation_steps": [
+      "listener is up and connection probe succeeds"
+    ],
+    "options": [
+      {
+        "option_id": "standard",
+        "steps": [
+          "diagnose",
+          "restart_listener",
+          "validate"
+        ],
+        "agents": [
+          "DiagnosticAgent",
+          "ConnectivityAgent",
+          "ValidationAgent"
+        ],
+        "recovery": "restore_listener",
+        "max_recoveries": 1,
+        "approval_required": false,
+        "requires_prior_failure": false
+      },
+      {
+        "option_id": "direct_recovery",
+        "steps": [
+          "diagnose",
+          "restore_listener",
+          "validate"
+        ],
+        "agents": [
+          "DiagnosticAgent",
+          "ConnectivityAgent",
+          "ValidationAgent"
+        ],
+        "recovery": null,
+        "max_recoveries": 0,
+        "approval_required": false,
+        "requires_prior_failure": true
+      }
+    ],
+    "provenance": {
+      "mode": "gemini",
+      "pipeline_revision": 2,
+      "model": "gemini-3.8-flash",
+      "evidence_hash": "a954f7a00686b50563709afe8049830bdb22039293b1014a365e84b2b16e6bec",
+      "revision_reason": "failed_restart_validation",
+      "source_run_id": "380bd3b5844d75cf02a8041cb74e16d06e9ad016b4785595703009d90ed8e5f7"
+    },
+    "version": 2
+  },
+  {
+    "cluster_id": "C-04",
+    "family": "storage",
+    "automation_enabled": true,
+    "system": "Oracle",
+    "signal": "archive_full",
+    "source_incident_ids": [
+      "H-storage-000",
+      "H-storage-001",
+      "H-storage-002",
+      "H-storage-003",
+      "H-storage-004",
+      "H-storage-005",
+      "H-storage-006",
+      "H-storage-007",
+      "H-storage-008",
+      "H-storage-009",
+      "H-storage-010",
+      "H-storage-011",
+      "H-storage-012",
+      "H-storage-013",
+      "H-storage-014",
+      "H-storage-015"
+    ],
+    "rca_summary": "Oracle archive destination capacity exhausted, resulting in blocked database write operations across affected nodes.",
+    "step_guidance": [
+      "Execute diagnose using DiagnosticAgent to confirm archive storage exhaustion and ensure valid backups exist prior to cleanup.",
+      "Obtain required approval and initiate archive_cleanup via StorageAgent to reclaim archive storage capacity.",
+      "Execute validate using ValidationAgent to ensure archive capacity is restored and database write probes succeed."
+    ],
+    "preconditions": [
+      "archive capacity exhausted; demo backup verified"
+    ],
+    "validation_steps": [
+      "archive has capacity and database write probe succeeds"
+    ],
+    "options": [
+      {
+        "option_id": "standard",
+        "steps": [
+          "diagnose",
+          "archive_cleanup",
+          "validate"
+        ],
+        "agents": [
+          "DiagnosticAgent",
+          "StorageAgent",
+          "ValidationAgent"
+        ],
+        "recovery": null,
+        "max_recoveries": 0,
+        "approval_required": true,
+        "requires_prior_failure": false
+      }
+    ],
+    "provenance": {
+      "mode": "gemini",
+      "pipeline_revision": 2,
+      "model": "gemini-3.8-flash",
+      "evidence_hash": "8e243228bc9e91c7294a70289f14f42978edb0842facf9269d3dd8cb453c2fc4"
+    },
+    "version": 1
+  },
+  {
+    "cluster_id": "C-01",
+    "family": "account",
+    "automation_enabled": true,
+    "system": "SAP",
+    "signal": "account_locked",
+    "source_incident_ids": [
+      "H-account-000",
+      "H-account-001",
+      "H-account-002",
+      "H-account-003",
+      "H-account-004",
+      "H-account-005",
+      "H-account-006",
+      "H-account-007",
+      "H-account-008",
+      "H-account-009",
+      "H-account-010",
+      "H-account-011"
+    ],
+    "rca_summary": "SAP service accounts become locked following failed authentication attempts and rejected logins on worker nodes.",
+    "step_guidance": [
+      "Confirm that the SAP service account is locked and identity verification prerequisites are met.",
+      "Perform diagnostic checks using DiagnosticAgent to investigate authentication failure logs on the affected worker node.",
+      "Obtain required approval and execute the unlock_account action via IdentityAgent to restore account access.",
+      "Execute validation using ValidationAgent to ensure the account is unlocked and authentication probes succeed before closing the incident."
+    ],
+    "preconditions": [
+      "account is locked; demo identity verified"
+    ],
+    "validation_steps": [
+      "account is unlocked and authentication probe succeeds"
+    ],
+    "options": [
+      {
+        "option_id": "standard",
+        "steps": [
+          "diagnose",
+          "unlock_account",
+          "validate"
+        ],
+        "agents": [
+          "DiagnosticAgent",
+          "IdentityAgent",
+          "ValidationAgent"
+        ],
+        "recovery": null,
+        "max_recoveries": 0,
+        "approval_required": true,
+        "requires_prior_failure": false
+      }
+    ],
+    "provenance": {
+      "mode": "gemini",
+      "pipeline_revision": 2,
+      "model": "gemini-3.8-flash",
+      "evidence_hash": "3bfd6267cfdada030cbd60f06d841627fd55b7fbcd386985c25a49bca4f11e27"
+    },
+    "version": 1
+  },
+  {
+    "cluster_id": "C-03",
+    "family": "job",
+    "automation_enabled": true,
+    "system": "Oracle",
+    "signal": "batch_failed",
+    "source_incident_ids": [
+      "H-job-000",
+      "H-job-001",
+      "H-job-002",
+      "H-job-003",
+      "H-job-004",
+      "H-job-005",
+      "H-job-006",
+      "H-job-007"
+    ],
+    "rca_summary": "Oracle scheduled batch job failures are caused by transient worker unavailability across worker nodes.",
+    "step_guidance": [
+      "Diagnose the failure using DiagnosticAgent to verify that the batch job failure was due to transient worker unavailability and confirm the worker node is accessible.",
+      "Verify preconditions ensuring the job remains incomplete and the retry operation is idempotent.",
+      "Trigger retry_job with JobAgent to re-run the failed batch job.",
+      "Use ValidationAgent to confirm that the job completed successfully and the expected output exists."
+    ],
+    "preconditions": [
+      "job incomplete; demo operation is idempotent"
+    ],
+    "validation_steps": [
+      "job completed and expected output exists"
+    ],
+    "options": [
+      {
+        "option_id": "standard",
+        "steps": [
+          "diagnose",
+          "retry_job",
+          "validate"
+        ],
+        "agents": [
+          "DiagnosticAgent",
+          "JobAgent",
+          "ValidationAgent"
+        ],
+        "recovery": null,
+        "max_recoveries": 0,
+        "approval_required": false,
+        "requires_prior_failure": false
+      }
+    ],
+    "provenance": {
+      "mode": "gemini",
+      "pipeline_revision": 2,
+      "model": "gemini-3.8-flash",
+      "evidence_hash": "75481893defb0f31503286ce0b792bf2f0fa43d145506fdcdbb71aca7c24dcef"
+    },
+    "version": 1
+  }
+]
